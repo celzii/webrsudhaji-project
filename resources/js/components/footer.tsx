@@ -87,7 +87,7 @@ export default function Footer() {
 
             {/* Bottom Bar */}
             <div className="bg-[#2D8A5B] py-4 text-center text-sm text-white">
-                Copyright © 2026 RSUD Haji Makassar. All Rights Reserved.
+                Copyright © 2026 RSUD Haji Makassar. Developed by Nailah Mujadiah and Chelsea Shelin P, Universitas Hasanuddin. All Rights Reserved.
             </div>
         </footer>
     );

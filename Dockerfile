@@ -56,7 +56,7 @@ RUN npm ci \
     && npm run build \
     && test -f public/build/manifest.json
 
-# 8. Configure Apache to serve Laravel public directory
+# 8. Configure Apache to serve Laravel public directory on port 8000
 RUN sed -i 's#DocumentRoot /var/www/html#DocumentRoot /var/www/html/public#' \
     /etc/apache2/sites-available/000-default.conf \
     && sed -i 's/AllowOverride None/AllowOverride All/g' \
