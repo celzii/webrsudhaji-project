@@ -29,19 +29,18 @@ try {
     putenv('APP_EVENTS_CACHE=/tmp/bootstrap/cache/events.php');
     putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
-    require __DIR__ . '/../vendor/autoload.php';
-    $app = require_once __DIR__ . '/../bootstrap/app.php';
+  // MENJADI SEPERTI INI (Standar Laravel 11 & 12):
+if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    throw new \Exception("Folder vendor tidak ditemukan. Pastikan Build Command menjalankan composer install.");
+}
 
-    $app->useStoragePath('/tmp/storage');
+require __DIR__ . '/../vendor/autoload.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
-    $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+$app->useStoragePath('/tmp/storage');
 
-    $response = $kernel->handle(
-        $request = Illuminate\Http\Request::capture()
-    );
+$app->handleRequest(\Illuminate\Http\Request::capture());
 
-    $response->send();
-    $kernel->terminate($request, $response);
 
 } catch (\Throwable $e) {
     // Tulis ke stderr supaya muncul di Runtime Logs Vercel
