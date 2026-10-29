@@ -29,9 +29,8 @@ try {
     putenv('APP_EVENTS_CACHE=/tmp/bootstrap/cache/events.php');
     putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
-  // MENJADI SEPERTI INI (Standar Laravel 11 & 12):
 if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    throw new \Exception("Folder vendor tidak ditemukan. Pastikan Build Command menjalankan composer install.");
+    throw new \Exception("Folder vendor/autoload.php tidak ditemukan di environment Vercel.");
 }
 
 require __DIR__ . '/../vendor/autoload.php';
